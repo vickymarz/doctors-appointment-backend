@@ -1,4 +1,3 @@
 class V1::AppointmentsController < ApplicationController
-  def index
-  end
+  def index; end
 end

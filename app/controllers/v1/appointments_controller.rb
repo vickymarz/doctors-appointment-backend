@@ -1,3 +1,9 @@
 class V1::AppointmentsController < ApplicationController
-  def index; end
+  before_action :set_appointment, only: %i[ show edit update destroy ]
+
+  def index
+    @appointments = current_user.appointments
+  end
+
+  
 end

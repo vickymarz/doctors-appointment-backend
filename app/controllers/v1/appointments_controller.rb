@@ -30,5 +30,22 @@ before_action :set_appointment, only: %i[ show edit update destroy ]
     end
   end
 
- 
+  def destroy
+    @appointment.destroy
+
+    respond_to do |format|
+      format.html { redirect_to appointments_url, notice: "Appointment was successfully destroyed." }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+
+  def set_appointment
+    @appointment = Appointment.find(params[:id])
+  end
+
+  def appointment_params
+    params.require(:appointment).permit(:name, :date, :city)
+  end
 end

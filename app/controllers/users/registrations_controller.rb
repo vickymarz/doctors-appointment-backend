@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
@@ -11,13 +9,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(user_params)
 
     if @user.save
-       render json: { user: @user }.to_json, status: 200
+      render json: { user: @user }.to_json, status: 200
     else
-     render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :confirmation_password)
+    params.require(:user).permit(:name, :email, :password)
   end
 end

@@ -117,13 +117,10 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.7-x64-mingw-ucrt)
       racc (~> 1.4)
-<<<<<<< HEAD
-    orm_adapter (0.5.0)
-=======
     nokogiri (1.13.7-x86_64-darwin)
       racc (~> 1.4)
+    orm_adapter (0.5.0)
     pg (1.4.1)
->>>>>>> 58f985412700f12d1a72e1bc4cfc359f86160438
     pg (1.4.1-x64-mingw-ucrt)
     puma (5.6.4)
       nio4r (~> 2.0)

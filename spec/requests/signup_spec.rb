@@ -6,7 +6,7 @@ RSpec.describe 'Signup', type: :request do
       let!(:user_data) { FactoryBot.create(:user) }
 
       before(:each) do
-        post '/auth', params:
+        post 'api/auth', params:
                           { user: {
                             name: user_data.name,
                             email: user_data.email,
@@ -29,7 +29,7 @@ RSpec.describe 'Signup', type: :request do
 
     context 'with invalid parameters' do
       before(:each) do
-        post '/auth', params:
+        post 'api/auth', params:
                           { user: {
                             name: '',
                             email: '',

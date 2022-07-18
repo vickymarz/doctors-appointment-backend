@@ -27,19 +27,19 @@ RSpec.describe 'Signup', type: :request do
       end
     end
 
-    # context 'with invalid parameters' do
-    #   before(:each) do
-    #     post '/auth', params:
-    #                       { user: {
-    #                         name: '',
-    #                         email: '',
-    #                         password: ''
-    #                       } }
-    #   end
+    context 'with invalid parameters' do
+      before(:each) do
+        post '/auth', params:
+                          { user: {
+                            name: '',
+                            email: '',
+                            password: ''
+                          } }
+      end
 
-    #   it 'returns a unprocessable entity status' do
-    #     expect(response).to have_http_status(:unprocessable_entity)
-    #   end
-    # end
+      it 'returns a unprocessable entity status' do
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+    end
   end
 end

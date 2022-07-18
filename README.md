@@ -5,6 +5,9 @@
 
 This is a project for getting myself acquainted with integrating a rails app with react as one full-stack web application.
 
+![image](https://user-images.githubusercontent.com/63473584/178965042-e2aeb7fe-ad54-44c9-956f-76725479d838.png)
+
+
 ## Frontend Live version
 
 [Live Version](https://greeting-app-frontend.herokuapp.com/)

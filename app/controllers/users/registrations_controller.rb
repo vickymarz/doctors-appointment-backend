@@ -1,6 +1,4 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  
-
   private
 
   def respond_with(_resource, _opts = {})

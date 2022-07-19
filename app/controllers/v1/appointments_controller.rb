@@ -2,6 +2,12 @@ class V1::AppointmentsController < ApplicationController
 before_action :set_appointment, only: %i[ show edit update destroy ]
   def index
     @appointments = current_user.appointments
+
+    render json: @appointments
+  end
+
+  def show
+    render json: @appointment
   end
 
   def new
@@ -12,7 +18,7 @@ before_action :set_appointment, only: %i[ show edit update destroy ]
     @appointment = current_user.appointments.new(appointment_params)
 
     if @appointment.save
-      render :create, status: :created
+      render json: @appointment, status: :created, location: @appointment
     else
       render json: @appointment.errors, status: :unprocessable_entity
     end
@@ -32,10 +38,7 @@ before_action :set_appointment, only: %i[ show edit update destroy ]
 
   def destroy
     @appointment.destroy
-
-    respond_to do |format|
-      format.html { redirect_to appointments_url, notice: "Appointment was successfully destroyed." }
-      format.json { head :no_content }
+      render json: { appointment: @appointment, message: "Appointment deleted." }
     end
   end
 

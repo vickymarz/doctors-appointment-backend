@@ -14,6 +14,18 @@ class Api::V1::DoctorsController < ApplicationController
     end
   end
 
+  def show
+    @doctor = Doctor.includes(:appointments).find(params[:id])
+
+    @appointments = @doctor.appointments.order(created_at: :desc)
+
+    @user = @doctor.appointments.current_user
+    
+    render json: { doctor: @doctor, @appointments, @user }, status: :created
+    
+  end
+  
+
   def doctor_params
     params.require(:doctor).permit(:name, :specialization, :charges)
   end

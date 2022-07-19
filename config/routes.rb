@@ -1,13 +1,19 @@
 Rails.application.routes.draw do
 
-  namespace :v1 do 
-    get 'doctors/index'
-    get 'appointments/index'
-    delete 'appointments/:id', to: "appointments#destroy"
-    post 'appointments', to: "appointments#create"
-    get 'users/index'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  scope :api, defaults: { format: 'json' } do
+      devise_for :users, 
+      controllers: { 
+        registrations: 'users/registrations',
+        sessions: 'users/sessions' }
   end
-  # Defines the root path route ("/")
-  # root "articles#index"
-end
+  
+    namespace :api, defaults: { format: 'json' } do
+      namespace :v1 do
+        resources :doctors
+        resources :users do
+          resources :appointments
+        end
+      end
+    end
+  end
+  

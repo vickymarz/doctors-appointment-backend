@@ -1,9 +1,18 @@
 Rails.application.routes.draw do
-  get 'doctors/index'
-  get 'appointments/index'
-  get 'users/index'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+scope :api, defaults: { format: 'json' } do
+    devise_for :users, 
+    controllers: { 
+      registrations: 'users/registrations',
+      sessions: 'users/sessions' }
+end
+
+  namespace :api, defaults: { format: 'json' } do
+    namespace :v1 do
+      resources :doctors
+      resources :users do
+        resources :appointments
+      end
+    end
+  end
 end

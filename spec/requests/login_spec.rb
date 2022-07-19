@@ -1,41 +1,23 @@
 require 'rails_helper'
 
-RSpec.describe 'Signup', type: :request do
+RSpec.describe 'Signin', type: :request do
   describe 'POST /create' do
-    context 'with valid parameters' do
-      let!(:user_data) { FactoryBot.create(:user) }
-
-      before do
-        post '/api/users', params:
-                          { user: {
-                            name: 'okorojiebube',
-                            email: 'okorojiebube4@gmail.com',
-                            password: '123456789'
-                          } }
-      end
-
-      it 'returns a created status' do
-        expect(response).to have_http_status(200)
-      end
-    end
-
     context 'with invalid parameters' do
       before(:each) do
-        post '/api/users', params:
+        post '/api/users/sign_in', params:
                           { user: {
                             name: '',
-                            email: 'okorojiebubee9@gmail.com',
                             password: '123456789'
                           } }
       end
 
       it 'returns a unprocessable entity status' do
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unauthorized)
       end
     end
     context 'with invalid parameters' do
       before(:each) do
-        post '/api/users', params:
+        post '/api/users/sign_in', params:
                           { user: {
                             name: 'okoroji',
                             email: '',
@@ -44,12 +26,12 @@ RSpec.describe 'Signup', type: :request do
       end
 
       it 'returns a unprocessable entity status' do
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unauthorized)
       end
     end
     context 'with invalid parameters' do
       before(:each) do
-        post '/api/users', params:
+        post '/api/users/sign_in', params:
                           { user: {
                             name: 'okoroji',
                             email: 'okorojiebube9@gmail.com',
@@ -58,7 +40,7 @@ RSpec.describe 'Signup', type: :request do
       end
 
       it 'returns a unprocessable entity status' do
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unauthorized)
       end
     end
   end

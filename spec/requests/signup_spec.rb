@@ -8,13 +8,12 @@ RSpec.describe 'Signup', type: :request do
       before do
         post '/api/users', params:
                           { user: {
-                            "name": "okorojiebube",
-                            "email": "okorojiebube7@gmail.com",
-                            "password": "123456789"
+                            name: 'okorojiebube',
+                            email: 'okorojiebube7@gmail.com',
+                            password: '123456789'
                           } }
       end
 
-     
       it 'returns a created status' do
         expect(response).to have_http_status(200)
       end
@@ -24,9 +23,9 @@ RSpec.describe 'Signup', type: :request do
       before(:each) do
         post '/api/users', params:
                           { user: {
-                            "name": "",
-                            "email": "okorojiebube9@gmail.com",
-                            "password": "123456789"
+                            name: '',
+                            email: 'okorojiebube9@gmail.com',
+                            password: '123456789'
                           } }
       end
 
@@ -38,9 +37,9 @@ RSpec.describe 'Signup', type: :request do
       before(:each) do
         post '/api/users', params:
                           { user: {
-                            "name": "okoroji",
-                            "email": "",
-                            "password": "123456789"
+                            name: 'okoroji',
+                            email: '',
+                            password: '123456789'
                           } }
       end
 
@@ -52,9 +51,9 @@ RSpec.describe 'Signup', type: :request do
       before(:each) do
         post '/api/users', params:
                           { user: {
-                            "name": "okoroji",
-                            "email": "okorojiebube9@gmail.com",
-                            "password": ""
+                            name: 'okoroji',
+                            email: 'okorojiebube9@gmail.com',
+                            password: ''
                           } }
       end
 

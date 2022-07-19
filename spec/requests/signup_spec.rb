@@ -5,8 +5,8 @@
 #     context 'with valid parameters' do
 #       let!(:user_data) { FactoryBot.create(:user) }
 
-#       before(:each) do
-#         post 'api/auth', params:
+#       before do
+#         post '/api/users', params:
 #                           { user: {
 #                             name: user_data.name,
 #                             email: user_data.email,
@@ -29,7 +29,7 @@
 
 #     context 'with invalid parameters' do
 #       before(:each) do
-#         post 'api/auth', params:
+#         post '/api/users', params:
 #                           { user: {
 #                             "name": '',
 #                             "email": '',

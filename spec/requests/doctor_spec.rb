@@ -20,7 +20,7 @@ RSpec.describe 'Doctor', type: :request do
 
     context 'with invalid parameters' do
       before(:each) do
-        post '/api/doctors', params:
+        post '/api/v1/doctors', params:
                           { doctor: {
                             name: '',
                             specialization: 'coder',
@@ -34,7 +34,7 @@ RSpec.describe 'Doctor', type: :request do
     end
     context 'with invalid parameters' do
       before(:each) do
-        post '/api/doctors', params:
+        post '/api/v1/doctors', params:
                           { doctor: {
                             name: 'okoroji',
                             specialization: '',
@@ -48,7 +48,7 @@ RSpec.describe 'Doctor', type: :request do
     end
     context 'with invalid parameters' do
       before(:each) do
-        post '/api/doctors', params:
+        post '/api/v1/doctors', params:
                           { doctor: {
                             name: 'okoroji',
                             specialization: 'faith9@gmail.com',
@@ -77,6 +77,24 @@ RSpec.describe 'Doctor', type: :request do
 
     it 'returns status code 200' do
       expect(response).to have_http_status(:success)
+    end
+  end
+end
+
+Rspec.describe 'Doctor', type: :request do
+  before(:each)  { get "/api/v1/doctors/#{1}" } 
+
+  context 'show' do
+    it 'GET /show status' do
+      expect(response).to have_http_status(200)
+    end
+
+    it 'GET /show render correct template(show)' do
+      expect(response).to render_template(:show)
+    end
+
+    it 'GET /show include correct placeholder text' do
+      expect(response.body).to include('Here is a list of posts for a given user')
     end
   end
 end

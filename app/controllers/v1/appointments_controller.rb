@@ -1,21 +1,16 @@
 class V1::AppointmentsController < ApplicationController
-before_action :set_appointment, only: %i[ show destroy ]
+  before_action :set_appointment, only: %i[destroy]
   def index
     @appointments = current_user.appointments
 
-    render json: @appointments
-  end
-
-  def show
-    render json: @appointment
-  end
-
-  def new
-    @appointment = Appointment.new
+    render json: { appointments: @appointments }.to_json
   end
 
   def create
-    @appointment = current_user.appointments.new(appointment_params)
+    date = Date.parse(params[:date])
+    save_params = appointment_params
+    save_params[:date] = date
+    @appointment = current_user.appointments.new(save_params)
 
     if @appointment.save
       render json: @appointment, status: :created, location: @appointment
@@ -25,9 +20,7 @@ before_action :set_appointment, only: %i[ show destroy ]
   end
 
   def destroy
-    @appointment.destroy
-      render json: { appointment: @appointment, message: "Appointment deleted." }
-    end
+    render json: { message: 'Appointment deleted succesfully.' } if @appointment.destroy
   end
 
   private
@@ -37,6 +30,6 @@ before_action :set_appointment, only: %i[ show destroy ]
   end
 
   def appointment_params
-    params.require(:appointment).permit(:name, :date, :city)
+    params.require(:appointment).permit(:name, :date, :city, :doctor_id)
   end
 end

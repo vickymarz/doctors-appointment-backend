@@ -39,7 +39,9 @@ class Api::V1::DoctorsController < ApplicationController
     end
   end
 
+  private
+
   def doctor_params
-    params.require(:doctor).permit(:name, :specialization, :charges)
+    params.require(:doctor).permit(:name, :specialization, :charges, :photo)
   end
 end

@@ -9,6 +9,8 @@ gem 'rails', '~> 7.0.3'
 
 gem 'ffi'
 
+gem 'rails-controller-testing'
+
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 

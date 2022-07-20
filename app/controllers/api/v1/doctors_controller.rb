@@ -1,7 +1,7 @@
 class Api::V1::DoctorsController < ApplicationController
   def index
     @doctors = Doctor.all
-    render json: { doctors: @doctors}.to_json, status: :ok
+    render json: { doctors: @doctors }.to_json, status: :ok
   end
 
   def create
@@ -9,13 +9,13 @@ class Api::V1::DoctorsController < ApplicationController
 
     if @doctor.save
       render json: {
-      message: 'Doctor added successfully',
-    }, status: :ok
+        message: 'Doctor added successfully'
+      }, status: :ok
 
     else
       render json: {
-      message: 'something went wrong'
-    }, status: :unprocessable_entity
+        message: 'something went wrong'
+      }, status: :unprocessable_entity
     end
   end
 
@@ -24,17 +24,12 @@ class Api::V1::DoctorsController < ApplicationController
 
     @appointments = @doctor.appointments.order(created_at: :desc)
 
-    
-    # @user = @doctor.appointments
-    
-    render json: { 
+    render json: {
       doctor: @doctor,
-      appointments: @appointments,  
-      # user: @user
+      appointments: @appointments
     }.to_json, status: :created
-    
   end
-  
+
   def doctor_params
     params.require(:doctor).permit(:name, :specialization, :charges)
   end

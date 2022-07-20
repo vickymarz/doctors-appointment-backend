@@ -30,6 +30,16 @@ class Api::V1::DoctorsController < ApplicationController
     }.to_json, status: :created
   end
 
+  def destroy
+   @doctor = Doctor.find(params[:id])
+    if @doctor.destroy
+     render json: { message: 'Doctor deleted succesfully.' }
+    else
+       render json: { message: 'Something went wrong' }, status: :unprocessable_entity
+    end
+  end
+  end
+
   def doctor_params
     params.require(:doctor).permit(:name, :specialization, :charges)
   end

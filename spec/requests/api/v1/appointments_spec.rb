@@ -1,7 +1,6 @@
 require 'swagger_helper'
 
 RSpec.describe 'api/v1/appointments', type: :request do
-
   path '/api/v1/users/{user_id}/appointments' do
     # You'll want to customize the parameter types...
     parameter name: 'user_id', in: :path, type: :string, description: 'user_id'
@@ -25,15 +24,15 @@ RSpec.describe 'api/v1/appointments', type: :request do
       response(200, 'successful') do
         let(:user_id) { '123' }
 
-        consumes 'application/json'        
-        parameter name: :doctor, in: :body, schema: {          
-        type: :object,          
-        properties: {            
-          name: { type: :string },            
-          city: { type: :string },
-          date: { type: :integer }
-        },          
-        required: %w[name city date]  
+        consumes 'application/json'
+        parameter name: :doctor, in: :body, schema: {
+          type: :object,
+          properties: {
+            name: { type: :string },
+            city: { type: :string },
+            date: { type: :integer }
+          },
+          required: %w[name city date]
         }
 
         after do |example|
@@ -74,15 +73,15 @@ RSpec.describe 'api/v1/appointments', type: :request do
         let(:user_id) { '123' }
         let(:id) { '123' }
 
-        consumes 'application/json'        
-        parameter name: :doctor, in: :body, schema: {          
-        type: :object,          
-        properties: {            
-          name: { type: :string },            
-          city: { type: :string },
-          date: { type: :integer }
-        },          
-        required: %w[name city date]  
+        consumes 'application/json'
+        parameter name: :doctor, in: :body, schema: {
+          type: :object,
+          properties: {
+            name: { type: :string },
+            city: { type: :string },
+            date: { type: :integer }
+          },
+          required: %w[name city date]
         }
 
         after do |example|
@@ -101,15 +100,15 @@ RSpec.describe 'api/v1/appointments', type: :request do
         let(:user_id) { '123' }
         let(:id) { '123' }
 
-        consumes 'application/json'        
-        parameter name: :doctor, in: :body, schema: {          
-        type: :object,          
-        properties: {            
-          name: { type: :string },            
-          city: { type: :string },
-          date: { type: :integer }
-        },          
-        required: %w[name city date]  
+        consumes 'application/json'
+        parameter name: :doctor, in: :body, schema: {
+          type: :object,
+          properties: {
+            name: { type: :string },
+            city: { type: :string },
+            date: { type: :integer }
+          },
+          required: %w[name city date]
         }
 
         after do |example|

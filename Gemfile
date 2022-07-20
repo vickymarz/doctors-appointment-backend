@@ -9,13 +9,10 @@ gem 'rails', '~> 7.0.3'
 
 gem 'ffi'
 
-gem 'rspec'
-
 gem 'rails-controller-testing'
 
 gem 'pg', '~> 1.1'
 # Use postgresql as the database for Active Record
-
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
@@ -46,20 +43,19 @@ gem 'rack-cors'
 
 gem 'rswag'
 
-group :development, :test do
+group :development, :test, :production do
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'rspec-rails'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'rake'
+  gem 'rspec'
 end
 
 group :production do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-  gem 'rake'
-  gem 'rspec'
-  gem 'rspec-rails'
 end
 
 group :test do

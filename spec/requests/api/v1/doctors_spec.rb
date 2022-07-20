@@ -1,12 +1,9 @@
 require 'swagger_helper'
 
 RSpec.describe 'api/v1/doctors', type: :request do
-
   path '/api/v1/doctors' do
-
     get('list doctors') do
       response(200, 'successful') do
-
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {
@@ -20,17 +17,16 @@ RSpec.describe 'api/v1/doctors', type: :request do
 
     post('create doctor') do
       response(200, 'Doctor added successfully') do
-
-        consumes 'application/json'        
-        parameter name: :doctor, in: :body, schema: {          
-        type: :object,          
-        properties: {            
-          name: { type: :string },            
-          specialization: { type: :string },
-          charges: { type: :integer },
-          photo: { type: :string }       
-        },          
-        required: %w[name specialization charges photo]  
+        consumes 'application/json'
+        parameter name: :doctor, in: :body, schema: {
+          type: :object,
+          properties: {
+            name: { type: :string },
+            specialization: { type: :string },
+            charges: { type: :integer },
+            photo: { type: :string }
+          },
+          required: %w[name specialization charges photo]
         }
 
         after do |example|
@@ -68,16 +64,16 @@ RSpec.describe 'api/v1/doctors', type: :request do
       response(200, 'Doctor added successfully') do
         let(:id) { '123' }
 
-        consumes 'application/json'        
-        parameter name: :doctor, in: :body, schema: {          
-        type: :object,          
-        properties: {            
-          name: { type: :string },            
-          specialization: { type: :string },
-          charges: { type: :integer },
-          photo: { type: :string }       
-        },          
-        required: %w[name specialization charges photo]  
+        consumes 'application/json'
+        parameter name: :doctor, in: :body, schema: {
+          type: :object,
+          properties: {
+            name: { type: :string },
+            specialization: { type: :string },
+            charges: { type: :integer },
+            photo: { type: :string }
+          },
+          required: %w[name specialization charges photo]
         }
 
         after do |example|
@@ -95,16 +91,16 @@ RSpec.describe 'api/v1/doctors', type: :request do
       response(200, 'Doctor added successfully') do
         let(:id) { '123' }
 
-        consumes 'application/json'        
-        parameter name: :doctor, in: :body, schema: {          
-        type: :object,          
-        properties: {            
-          name: { type: :string },            
-          specialization: { type: :string },
-          charges: { type: :integer },
-          photo: { type: :string }       
-        },          
-        required: %w[name specialization charges photo]  
+        consumes 'application/json'
+        parameter name: :doctor, in: :body, schema: {
+          type: :object,
+          properties: {
+            name: { type: :string },
+            specialization: { type: :string },
+            charges: { type: :integer },
+            photo: { type: :string }
+          },
+          required: %w[name specialization charges photo]
         }
 
         after do |example|

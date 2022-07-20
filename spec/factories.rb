@@ -5,3 +5,11 @@ FactoryBot.define do
     password { '123456789' }
   end
 end
+
+FactoryBot.define do
+  factory :doctor do
+    name { 'okorojiebube' }
+    specialization { 'coder' }
+    charges { 20 }
+  end
+end

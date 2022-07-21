@@ -2,6 +2,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def respond_with(_resource, _opts = {})
+    
     register_success && return if resource.persisted?
 
     register_failed
@@ -10,13 +11,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def register_success
     render json: {
       message: 'Signed up successfully',
-      user: current_user
+      user: current_user,
+      status: 200
     }, status: :ok
   end
 
   def register_failed
     render json: {
-      message: 'something went wrong'
+      message: 'User with email already exists',
+      status: 401
     }, status: :unprocessable_entity
   end
 end

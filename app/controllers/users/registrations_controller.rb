@@ -2,7 +2,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def respond_with(_resource, _opts = {})
-    
     register_success && return if resource.persisted?
 
     register_failed

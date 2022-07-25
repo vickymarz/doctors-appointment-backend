@@ -22,6 +22,7 @@ RSpec.describe 'api/v1/doctors', type: :request do
           type: :object,
           properties: {
             name: { type: :string },
+            description: { type: :string },
             specialization: { type: :string },
             charges: { type: :integer },
             photo: { type: :string }
@@ -69,6 +70,7 @@ RSpec.describe 'api/v1/doctors', type: :request do
           type: :object,
           properties: {
             name: { type: :string },
+            description: { type: :string },
             specialization: { type: :string },
             charges: { type: :integer },
             photo: { type: :string }
@@ -96,6 +98,7 @@ RSpec.describe 'api/v1/doctors', type: :request do
           type: :object,
           properties: {
             name: { type: :string },
+            description: { type: :string },
             specialization: { type: :string },
             charges: { type: :integer },
             photo: { type: :string }

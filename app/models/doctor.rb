@@ -3,6 +3,7 @@ class Doctor < ApplicationRecord
   has_many :users, through: :appointments
 
   validates :name, presence: true
+  validates :descriptions, presence: true
   validates :specialization, presence: true
   validates :charges, presence: true
   validates :photo, presence: true

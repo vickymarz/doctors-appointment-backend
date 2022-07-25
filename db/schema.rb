@@ -28,6 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_18_092712) do
 
   create_table "doctors", force: :cascade do |t|
     t.string "name"
+    t.text "description"
     t.string "specialization"
     t.integer "charges"
     t.string "photo"

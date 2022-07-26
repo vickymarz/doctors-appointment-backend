@@ -1,11 +1,14 @@
 require 'swagger_helper'
 
 RSpec.describe 'users/registrations', type: :request do
+  let(:user) do
+    {:user => { name: 'okoroji', email: 'email@domain.com', password: 'Password1'}}
+  end
   path '/api/users' do
     post('create registration') do
       response(200, 'Sign up successful') do
         consumes 'application/json'
-        parameter name: :registration, in: :body, schema: {
+        parameter name: :user, in: :body, schema: {
           type: :object,
           properties: {
             name: { type: :string },

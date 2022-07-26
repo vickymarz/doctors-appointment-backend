@@ -46,8 +46,7 @@ gem 'rswag'
 group :development, :test, :production do
   gem 'database_cleaner'
   gem 'factory_bot_rails'
-  gem 'rspec-rails'
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'rspec-rails', '~> 4.0.1'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rake'
   gem 'rspec'

@@ -1,13 +1,13 @@
 require 'swagger_helper'
 
 RSpec.describe 'users/sessions', type: :request do
-let(:user) do
-    create(:user,  email: 'email@domain.com', password: 'Password1')
- end
-  
- before do
-  sign_in(user)
-end
+  let(:user) do
+    create(:user, email: 'email@domain.com', password: 'Password1')
+  end
+
+  before do
+    sign_in(user)
+  end
 
   path '/api/users/sign_in' do
     post('create session') do
@@ -36,6 +36,9 @@ end
 
   path '/api/users/sign_out' do
     delete('delete session') do
+      after do
+        logout(:user)
+      end
       response(200, 'successful') do
         after do |example|
           example.metadata[:response][:content] = {

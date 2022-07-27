@@ -13,7 +13,7 @@ class Api::V1::AppointmentsController < ApplicationController
     @appointment = current_user.appointments.new(save_params)
 
     if @appointment.save
-      render json: @appointment, status: :created, location: @appointment
+      render json: @appointment, status: :created
     else
       render json: @appointment.errors, status: :unprocessable_entity
     end

@@ -45,11 +45,11 @@ gem 'rswag'
 
 group :development, :test, :production do
   gem 'database_cleaner'
-  gem 'factory_bot_rails'
-  gem 'rspec-rails', '~> 4.0.1'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails'
   gem 'rake'
   gem 'rspec'
+  gem 'rspec-rails', '~> 4.0.1'
 end
 
 group :production do

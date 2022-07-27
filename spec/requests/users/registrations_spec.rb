@@ -2,7 +2,7 @@ require 'swagger_helper'
 
 RSpec.describe 'users/registrations', type: :request do
   let(:user) do
-    {:user => { name: 'okoroji', email: 'email@domain.com', password: 'Password1'}}
+    { user: { name: 'okoroji', email: 'email@domain.com', password: 'Password1' } }
   end
   path '/api/users' do
     post('create registration') do

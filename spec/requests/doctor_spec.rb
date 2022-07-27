@@ -35,6 +35,39 @@ RSpec.describe 'Doctor', type: :request do
       expect(response).to have_http_status(:unprocessable_entity)
     end
   end
+  context 'with invalid parameters' do
+    before(:each) do
+      post '/api/v1/doctors', params:
+                        { doctor: {
+                          name: '',
+                          specialization: 'coder',
+                          charges: 20,
+                          description: '',
+                          photo: 'https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+                        } }
+    end
+
+    it 'returns a unprocessable entity status' do
+      expect(response).to have_http_status(:unprocessable_entity)
+    end
+  end
+
+  context 'with invalid parameters' do
+    before(:each) do
+      post '/api/v1/doctors', params:
+                        { doctor: {
+                          name: '',
+                          specialization: 'coder',
+                          charges: 20,
+                          description: 'hello',
+                          photo: ''
+                        } }
+    end
+
+    it 'returns a unprocessable entity status' do
+      expect(response).to have_http_status(:unprocessable_entity)
+    end
+  end
 
   context 'with invalid parameters' do
     before(:each) do

@@ -17,7 +17,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def register_failed
     render json: {
-      message: 'User with email already exists',
+      message: 'Somehing went wrong',
       status: 401
     }, status: :unprocessable_entity
   end

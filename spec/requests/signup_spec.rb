@@ -9,7 +9,7 @@ RSpec.describe 'Signup', type: :request do
         post '/api/users', params:
                           { user: {
                             name: 'okorojiebube',
-                            email: 'okorojiebube4@gmail.com',
+                            email: 'okorojiebube44@gmail.com',
                             password: '123456789'
                           } }
       end

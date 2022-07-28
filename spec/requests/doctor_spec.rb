@@ -8,7 +8,9 @@ RSpec.describe 'Doctor', type: :request do
                         { doctor: {
                           name: doctor_data.name,
                           specialization: doctor_data.specialization,
-                          charges: doctor_data.charges
+                          charges: doctor_data.charges,
+                          description: doctor_data.description,
+                          photo: doctor_data.photo
                         } }
     end
 
@@ -23,7 +25,42 @@ RSpec.describe 'Doctor', type: :request do
                         { doctor: {
                           name: '',
                           specialization: 'coder',
-                          charges: 20
+                          charges: 20,
+                          description: 'hello',
+                          photo: 'https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+                        } }
+    end
+
+    it 'returns a unprocessable entity status' do
+      expect(response).to have_http_status(:unprocessable_entity)
+    end
+  end
+  context 'with invalid parameters' do
+    before(:each) do
+      post '/api/v1/doctors', params:
+                        { doctor: {
+                          name: '',
+                          specialization: 'coder',
+                          charges: 20,
+                          description: '',
+                          photo: 'https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+                        } }
+    end
+
+    it 'returns a unprocessable entity status' do
+      expect(response).to have_http_status(:unprocessable_entity)
+    end
+  end
+
+  context 'with invalid parameters' do
+    before(:each) do
+      post '/api/v1/doctors', params:
+                        { doctor: {
+                          name: '',
+                          specialization: 'coder',
+                          charges: 20,
+                          description: 'hello',
+                          photo: ''
                         } }
     end
 
@@ -38,7 +75,9 @@ RSpec.describe 'Doctor', type: :request do
                         { doctor: {
                           name: 'okoroji',
                           specialization: '',
-                          charges: 20
+                          charges: 20,
+                          description: 'hello',
+                          photo: 'https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
                         } }
     end
 
@@ -52,8 +91,10 @@ RSpec.describe 'Doctor', type: :request do
       post '/api/v1/doctors', params:
                         { doctor: {
                           name: 'okoroji',
+                          description: 'hello',
                           specialization: 'faith9@gmail.com',
-                          charges: ''
+                          charges: '',
+                          photo: 'https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
                         } }
     end
 

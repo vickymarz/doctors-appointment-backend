@@ -5,11 +5,11 @@ class ApplicationController < ActionController::API
 
   protected
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: %i[name email password])
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.permit(:sign_up, keys: %i[name email password])
 
-    devise_parameter_sanitizer.permit(:sign_in) do |user_params|
+      devise_parameter_sanitizer.permit(:sign_in) do |user_params|
       user_params.permit(:name, :password)
     end
-  end
+    end
 end

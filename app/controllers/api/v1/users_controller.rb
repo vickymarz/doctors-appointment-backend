@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
   def index
-    @user = current_user
+    @user = current_api_user
     render json: @user, status: :ok
   end
 end

@@ -7,6 +7,13 @@ This is a project for getting myself acquainted with integrating a rails app wit
 
 ![image](https://user-images.githubusercontent.com/63473584/178965042-e2aeb7fe-ad54-44c9-956f-76725479d838.png)
 
+## Backend Server
+
+[Api documentation](https://doctorsappointmentapp.herokuapp.com/api-docs/index.html)
+
+## Backend Source Code
+
+[Source Code](https://github.com/vickymarz/doctors-appointment-backend)
 
 ## Frontend Live version
 

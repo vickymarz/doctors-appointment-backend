@@ -3,8 +3,8 @@ class Api::V1::AppointmentsController < ApplicationController
   before_action :set_appointment, only: %i[destroy]
 
   def index
-      @appointments = current_user.appointments
-      render json: @appointments
+    @appointments = current_user.appointments
+    render json: @appointments
   end
 
   def create
@@ -35,6 +35,6 @@ class Api::V1::AppointmentsController < ApplicationController
   end
 
   def appointment_params
-    params.require(:appointment).permit(:date, :city, :doctor_id, :user_id) 
+    params.require(:appointment).permit(:date, :city, :doctor_id, :user_id)
   end
 end

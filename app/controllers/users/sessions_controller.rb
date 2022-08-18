@@ -1,5 +1,4 @@
 class Users::SessionsController < Devise::SessionsController
-
   private
 
   def respond_with(_resource, _opts = {})
@@ -15,7 +14,6 @@ class Users::SessionsController < Devise::SessionsController
       token: request.env['warden-jwt_auth.token'],
       status: 200
     }, status: :ok
-    
   end
 
   def login_failed

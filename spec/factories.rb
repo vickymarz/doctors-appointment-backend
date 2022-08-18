@@ -1,5 +1,4 @@
 FactoryBot.define do
-
   factory :user do
     id { rand(1..100) }
     name { 'okorojiebube' }
@@ -9,7 +8,6 @@ FactoryBot.define do
 end
 
 FactoryBot.define do
-
   factory :doctor do
     name { 'okorojiebube' }
     description { 'hello' }
@@ -20,7 +18,6 @@ FactoryBot.define do
 end
 
 FactoryBot.define do
-
   factory :appointment do
     name { 'faith' }
     city { 'Canada' }

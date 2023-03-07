@@ -17,7 +17,7 @@ This is a project for getting myself acquainted with integrating a rails app wit
 
 ## Frontend Live version
 
-[Live Version](https://greeting-app-frontend.herokuapp.com/)
+[Live Version](https://doctors-appointment-app-2k1t.onrender.com/)
 
 ## Frontend Source Code
 
@@ -41,7 +41,7 @@ This is a project for getting myself acquainted with integrating a rails app wit
 - Ruby
 - Rails
 - Postgresql
-- Api 
+- Api
 ## Getting Started
 
 
@@ -112,7 +112,7 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 
 - Microverse
-- Coding Partners 
+- Coding Partners
 - Design inspiration by [Murat Korkmaz](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign)
 
 

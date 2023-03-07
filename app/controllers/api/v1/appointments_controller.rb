@@ -1,9 +1,10 @@
 class Api::V1::AppointmentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_appointment, only: %i[destroy]
+
   def index
     @appointments = current_user.appointments
-
-    render json: { appointments: @appointments }.to_json
+    render json: @appointments
   end
 
   def create
@@ -13,23 +14,27 @@ class Api::V1::AppointmentsController < ApplicationController
     @appointment = current_user.appointments.new(save_params)
 
     if @appointment.save
-      render json: @appointment, status: :created
+      render json: {
+        message: 'Reservation Successful',
+        status: 201
+      }, status: :created
+
     else
       render json: @appointment.errors, status: :unprocessable_entity
     end
   end
 
   def destroy
-    render json: { message: 'Appointment deleted succesfully.' } if @appointment.destroy
+    render json: { message: 'Appointment deleted succesfully.' } if @current_appointment.destroy
   end
 
   private
 
   def set_appointment
-    @appointment = Appointment.find(params[:id])
+    @current_appointment = current_user.appointments.find(params[:id]) if current_user.appointments.exists?(params[:id])
   end
 
   def appointment_params
-    params.require(:appointment).permit(:name, :date, :city, :doctor_id)
+    params.require(:appointment).permit(:date, :city, :doctor_id, :user_id)
   end
 end

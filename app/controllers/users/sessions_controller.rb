@@ -1,6 +1,4 @@
 class Users::SessionsController < Devise::SessionsController
-  skip_before_action :verify_signed_out_user
-
   private
 
   def respond_with(_resource, _opts = {})
@@ -13,6 +11,7 @@ class Users::SessionsController < Devise::SessionsController
     render json: {
       message: 'You are logged In',
       user: current_user,
+      token: request.env['warden-jwt_auth.token'],
       status: 200
     }, status: :ok
   end
@@ -32,7 +31,8 @@ class Users::SessionsController < Devise::SessionsController
 
   def log_out_success
     render json: {
-      message: 'You are logged out'
+      message: 'You are logged out',
+      status: 204
     }, status: :ok
   end
 
